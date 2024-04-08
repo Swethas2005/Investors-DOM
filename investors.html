@@ -1,0 +1,151 @@
+v<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investors</title>
+    <style>
+        h1 {
+            color: #000000;
+            font-size: 34px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bolder;
+            text-align: center;
+            margin: 0;
+        }
+
+        #logos {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .logo {
+            width: 301px;
+            height: 121px;
+            padding-bottom: 32px;
+            
+        }
+
+        #flex {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 64px ;
+        }
+
+        .cards {
+            width: 246px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .image {
+            width: 245px;
+            height: 253px;
+            border-radius: 10px;
+        }
+
+        .founder {
+            color: #0A0103;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bolder; 
+            text-align: center;
+            padding: 8px 8px 0px 8px;
+            margin: 0px;
+            
+        } 
+
+        .position {
+            color: #544D4F;
+            font-family:'Open Sans', sans-serif;
+            padding: 0px 8px;
+            text-align: center;
+            margin: 0px;
+            
+        }
+
+        .investor-logo {
+            width: 140px;
+            height: 48px;
+            margin-left: 52px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Board members</h1>
+    <div id="logos"></div>
+    <div id="flex"></div>
+
+    <script>
+        
+        const logosData = [
+            "https://www.masaischool.com/images/our-investors/india-q-borderless.svg",
+            "https://www.masaischool.com/images/our-investors/unitus-borderless.svg",
+            "https://www.masaischool.com/images/our-investors/omidyar-borderless.svg"
+        ];
+
+        
+        const investorsData = [
+            { image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg", founder: "Vijay Shekar Sharma", position: "Founder & CEO", logo: "https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" },
+            { image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Rectangle_427_637d69bb57.png", founder: "Kunal Shah", position: "Founder", logo: "https://masai-website-images.s3.ap-south-1.amazonaws.com/cred_0a47d7b4f8.png" },
+            { image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg", founder: "Amrish Rau", position: "CEO", logo: "https://masai-website-images.s3.ap-south-1.amazonaws.com/pine_labs_0aa2407434.png" },
+            { image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Sampad_swain_Instamojo_f12bf6341e.jpg", founder: "Sampad Swain", position: "Co-Founder & CEO", logo: "https://masai-website-images.s3.ap-south-1.amazonaws.com/instamojo_8763e704f7.png" }
+        ];
+
+        
+        function createInvestorLogo(logoUrl) {
+            const logo = document.createElement('img');
+            logo.classList.add('logo');
+            logo.src = logoUrl;
+            return logo;
+        }
+
+       
+        function createInvestorCard(investor) {
+            const card = document.createElement('div');
+            card.classList.add('cards');
+
+            const image = document.createElement('img');
+            image.classList.add('image');
+            image.src = investor.image;
+
+            const founder = document.createElement('p');
+            founder.classList.add('founder');
+            founder.textContent = investor.founder;
+
+            const position = document.createElement('p');
+            position.classList.add('position');
+            position.textContent = investor.position;
+
+            const logo = document.createElement('img');
+            logo.classList.add('investor-logo');
+            logo.src = investor.logo;
+
+            card.appendChild(image);
+            card.appendChild(founder);
+            card.appendChild(position);
+            card.appendChild(logo);
+
+            return card;
+        }
+
+        
+        const logosContainer = document.getElementById('logos');
+        logosData.forEach(logoUrl => {
+            const logo = createInvestorLogo(logoUrl);
+            logosContainer.appendChild(logo);
+        });
+
+        
+        const flexContainer = document.getElementById('flex');
+        investorsData.forEach(investor => {
+            const card = createInvestorCard(investor);
+            flexContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
